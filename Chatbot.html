@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delicious Eats Restaurant</title>
+    <style>
+         body {
+            background-image: url("https://t3.ftcdn.net/jpg/03/24/73/92/360_F_324739203_keeq8udvv0P2h1MLYJ0GLSlTBagoXS48.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed; 
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 40px;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #555;
+            padding: 10px;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        nav a:hover {
+            background-color: #fff;
+            color: #555;
+        }
+        .menu-container {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+        }
+        .menu {
+            width: 45%;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .menu:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .menu h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .menu li {
+            margin: 10px 0;
+            padding-left: 20px;
+            position: relative;
+            color: #555;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .menu li:hover {
+            color: #333;
+        }
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+        .menu-popup {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            max-width: 80%;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #333;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Delicious Eats Restaurant</h1>
+        <p>Indulge in a World of Flavors</p>
+    </header>
+    <nav>
+        <a href="#vegetarian-menu">Vegetarian Menu</a>
+        <a href="#non-vegetarian-menu">Non-Vegetarian Menu</a>
+    </nav>
+    <div class="menu-container" id="vegetarian-menu">
+        <div class="menu">
+            <h2>Vegetarian Menu</h2>
+            <ul>
+                <!-- Vegetarian menu items here -->
+            </ul>
+        </div>
+    </div>
+    <div class="menu-container" id="non-vegetarian-menu">
+        <div class="menu">
+            <h2>Non-Vegetarian Menu</h2>
+            <ul>
+                <!-- Non-vegetarian menu items here -->
+            </ul>
+        </div>
+    </div>
+    <div class="overlay" id="overlay">
+        <div class="menu-popup">
+            <span class="close-btn" id="closeBtn">&times;</span>
+            <h2 id="popupTitle">Menu Item</h2>
+            <p id="popupDescription">Description of the menu item.</p>
+        </div>
+    </div>
+    <script>
+        const menuItems = document.querySelectorAll('.menu-item');
+        const overlay = document.getElementById('overlay');
+        const closeBtn = document.getElementById('closeBtn');
+        const popupTitle = document.getElementById('popupTitle');
+        const popupDescription = document.getElementById('popupDescription');
+
+        menuItems.forEach(item => {
+            item.addEventListener('click', () => {
+                overlay.style.display = 'flex';
+                popupTitle.textContent = item.textContent;
+                popupDescription.textContent = `Description of ${item.textContent}`;
+            });
+        });
+
+        closeBtn.addEventListener('click', () => {
+            overlay.style.display = 'none';
+        });
+    </script>
+    <script>
+      window.watsonAssistantChatOptions = {
+        integrationID: "bf4b8cc6-95c5-427c-8aa2-d2897483bb41", // The ID of this integration.
+        region: "au-syd", // The region your integration is hosted in.
+        serviceInstanceID: "315197c8-8461-4857-bf2e-7e6f99c1a270", // The ID of your service instance.
+        onLoad: function(instance) { instance.render(); }
+      };
+      setTimeout(function(){
+        const t=document.createElement('script');
+        t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+        document.head.appendChild(t);
+      });
+    </script>
+</body>
+</html>
